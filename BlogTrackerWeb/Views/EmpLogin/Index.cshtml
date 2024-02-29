@@ -1,0 +1,30 @@
+﻿@model BlogTrackerWeb.Models.EmpLogin
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Employee Login</h2>
+
+@using (Html.BeginForm("Index", "Blogs", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBox("username", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PassCode)
+        @Html.Password("password", null, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+}
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
